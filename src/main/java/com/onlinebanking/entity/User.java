@@ -1,23 +1,49 @@
 package com.onlinebanking.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
+@Entity
 public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(nullable = false, length = 20)
+	@Size(min = 3, max = 20)
 	private String name;
 
+	@Column(nullable = false, length = 20, unique = true)
+	@Size(min = 3, max = 20)
 	private String username;
 
+	@Column(nullable = false, length = 20)
+	@Size(min = 3, max = 20)
 	private String password;
 
+	@Column(nullable = false)
+	@Min(18)
+	@Max(99)
 	private Integer age;
 
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private Gender gender;
 
 	public User() {
 		super();
 	}
 
-	public User(Long id, String name, String username, String password, Integer age, Gender gender) {
+	public User(Long id, @Size(min = 3, max = 20) String name, @Size(min = 3, max = 20) String username,
+			@Size(min = 3, max = 20) String password, @Min(18) @Max(99) Integer age, Gender gender) {
 		super();
 		this.id = id;
 		this.name = name;

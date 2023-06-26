@@ -2,16 +2,21 @@ package com.onlinebanking.dto;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.NotNull;
+
 import com.onlinebanking.entity.TransactionType;
 import com.onlinebanking.entity.User;
 
 public class TransactionDTO {
 	private Long id;
 
+	@NotNull
 	private User user;
 
+	@NotNull
 	private BigDecimal amount;
 
+	@NotNull
 	private TransactionType type;
 
 	public TransactionDTO() {

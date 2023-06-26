@@ -2,18 +2,24 @@ package com.onlinebanking.dto;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.NotNull;
+
 import com.onlinebanking.entity.AccountType;
 import com.onlinebanking.entity.User;
 
 public class AccountDTO {
 	private Long id;
 
+	@NotNull
 	private User user;
 
+	@NotNull
 	private String number;
 
+	@NotNull
 	private BigDecimal balance;
 
+	@NotNull
 	private AccountType accountType;
 
 	public AccountDTO() {

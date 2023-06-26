@@ -1,25 +1,41 @@
 package com.onlinebanking.dto;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.onlinebanking.entity.Gender;
 
 public class UserDTO {
 	private Long id;
-
+	
+	@NotNull
+	@Size(min = 3, max = 20)
 	private String name;
-
+	
+	@NotNull
+	@Size(min = 3, max = 20)
 	private String username;
-
+	
+	@NotNull
+	@Size(min = 3, max = 20)
 	private String password;
-
+	
+	@NotNull
+	@Min(18)
+	@Max(99)
 	private Integer age;
-
+	
+	@NotNull
 	private Gender gender;
 
 	public UserDTO() {
 		super();
 	}
 
-	public UserDTO(Long id, String name, String username, String password, Integer age, Gender gender) {
+	public UserDTO(Long id, @Size(min = 3, max = 20) String name, @Size(min = 3, max = 20) String username,
+			@Size(min = 3, max = 20) String password, @Min(18) @Max(99) Integer age, Gender gender) {
 		super();
 		this.id = id;
 		this.name = name;
